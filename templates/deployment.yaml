@@ -29,7 +29,7 @@ kind: Job
 metadata:
   name: test-post-sync-check
   annotations:
-    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-weight": "200"
     "argocd.argoproj.io/hook": "PostSync"
 spec:
   template:
