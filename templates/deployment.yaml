@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: nginx:1.210.1
+        image: nginx:1.21.1
         ports:
         - containerPort: 80
         env:
@@ -29,7 +29,7 @@ kind: Job
 metadata:
   name: test-post-sync-check
   annotations:
-    "helm.sh/hook-weight": "200"
+    "helm.sh/hook-weight": "2"
     "argocd.argoproj.io/hook": "PostSync"
 spec:
   template:
