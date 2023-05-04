@@ -23,3 +23,20 @@ spec:
         env:
         - name: MESSAGE
           value: "{{ .Values.message }}"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-post-sync-check
+  annotations:
+    "helm.sh/hook-weight": "2"
+    "argocd.argoproj.io/hook": "PostSync"
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-sync-check
+        image: busybox:latest # Replace with the image you want to use for your post-sync check
+        command: ['sh', '-c', 'echo "Deployment is fine!"'] # Replace with your actual post-sync check command(s)
+      restartPolicy: Never
+  backoffLimit: 0
