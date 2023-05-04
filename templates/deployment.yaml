@@ -4,7 +4,6 @@ metadata:
   name: {{ .Chart.Name }}
   annotations:
     "helm.sh/hook-weight": "-100"
-    "helm.sh/hook": "test"     
  
 spec:
   replicas: 1
