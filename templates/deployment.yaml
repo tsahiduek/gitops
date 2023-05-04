@@ -4,7 +4,8 @@ metadata:
   name: {{ .Chart.Name }}
   annotations:
     "helm.sh/hook-weight": "-100"
- 
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook": "test"
 spec:
   replicas: 1
   selector:
@@ -23,54 +24,3 @@ spec:
         env:
         - name: MESSAGE
           value: "{{ .Values.message }}"
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: test-post-sync-check
-  annotations:
-    "helm.sh/hook-weight": "2"
-    "argocd.argoproj.io/hook": "PostSync"
-spec:
-  template:
-    spec:
-      containers:
-      - name: post-sync-check
-        image: busybox:latest # Replace with the image you want to use for your post-sync check
-        command: ['sh', '-c', 'echo "Deployment is fine!"'] # Replace with your actual post-sync check command(s)
-      restartPolicy: Never
-  backoffLimit: 0
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: test-post-sync-check-9
-  annotations:
-    "helm.sh/hook-weight": "4"
-    "argocd.argoproj.io/hook": "PostSync"
-spec:
-  template:
-    spec:
-      containers:
-      - name: post-sync-check-9
-        image: busybox:latest # Replace with the image you want to use for your post-sync check
-        command: ['sh', '-c', 'echo "Om Sai Ram"'] # Replace with your actual post-sync check command(s)
-      restartPolicy: Never
-  backoffLimit: 0
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: test-post-sync-check-9999
-  annotations:
-    "helm.sh/hook-weight": "9"
-    "helm.sh/hook": "test"
-spec:
-  template:
-    spec:
-      containers:
-      - name: post-sync-check-9999
-        image: busybox:latest # Replace with the image you want to use for your post-sync check
-        command: ['sh', '-c', 'echo "Jai Sai Ram"'] # Replace with your actual post-sync check command(s)
-      restartPolicy: Never
-  backoffLimit: 0
