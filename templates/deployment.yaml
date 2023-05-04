@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
-annotations:
+  annotations:
     "helm.sh/hook-weight": "-100"
     "helm.sh/hook-delete-policy": "before-hook-creation"
 spec:
