@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: nginx:1.21000000.1
+        image: nginx:1.210.1
         ports:
         - containerPort: 80
         env:
