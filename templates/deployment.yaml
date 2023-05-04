@@ -40,3 +40,20 @@ spec:
         command: ['sh', '-c', 'echo "Deployment is fine!"'] # Replace with your actual post-sync check command(s)
       restartPolicy: Never
   backoffLimit: 0
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-post-sync-check-9
+  annotations:
+    "helm.sh/hook-weight": "4"
+    "argocd.argoproj.io/hook": "PostSync"
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-sync-check-9
+        image: busybox:latest # Replace with the image you want to use for your post-sync check
+        command: ['sh', '-c', 'echo "Om Sai Ram"'] # Replace with your actual post-sync check command(s)
+      restartPolicy: Never
+  backoffLimit: 0
