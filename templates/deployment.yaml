@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
   annotations:
-    "helm.sh/hook-delete-policy": "before-hook-creation"
-    "helm.sh/hook": "test"
-    
+    "helm.sh/hook-weight": "-100"
+    "helm.sh/hook": "test"     
+ 
 spec:
   replicas: 1
   selector:
