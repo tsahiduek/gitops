@@ -8,7 +8,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: ecsdemo-frontend
+  project: default
   destination:
     namespace: frontend
     server: {{ .Values.spec.destination.server }}
