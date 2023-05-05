@@ -6,7 +6,7 @@ spec:
     server: https://kubernetes.default.svc
   apps:
     ecsdemoFrontend:
-      repoURL: git@github.com:aws-containers/ecsdemo-frontend.git
+      repoURL: git@github.com:tsahiduek/ecsdemo-frontend.git
       targetRevision: main
       path: kubernetes/helm/ecsdemo-frontend
     ecsdemoNodejs:
